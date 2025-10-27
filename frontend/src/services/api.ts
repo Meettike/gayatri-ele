@@ -1,7 +1,7 @@
 // API configuration and base service
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? '/api' 
-  : 'http://localhost:5000/api';
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api'
+  : '/api';
 
 // API response types
 export interface ApiResponse<T = unknown> {
