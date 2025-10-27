@@ -18,10 +18,26 @@ module.exports = async function handler(req, res) {
   try {
     const { name, email, phone, company, subject, message } = req.body;
     
-    if (!name || !email || !subject || !message) {
+    // Log the received data for debugging
+    console.log('Received contact form data:', { name, email, phone, company, subject, message });
+    
+    if (!name || !email || !message) {
       return res.status(400).json({
         error: 'Missing required fields',
-        required: ['name', 'email', 'subject', 'message']
+        required: ['name', 'email', 'message'],
+        received: { name: !!name, email: !!email, message: !!message, subject: !!subject }
+      });
+    }
+
+    // Check if email configuration is available
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Email configuration missing:', {
+        EMAIL_USER: !!process.env.EMAIL_USER,
+        EMAIL_PASS: !!process.env.EMAIL_PASS
+      });
+      return res.status(500).json({
+        error: 'Email service not configured',
+        message: 'Please contact us directly at tikemeet3@gmail.com'
       });
     }
 
@@ -37,6 +53,7 @@ module.exports = async function handler(req, res) {
     });
 
     // Email content
+    const emailSubject = subject || 'General Inquiry';
     const emailContent = `
 New Contact Form Submission
 
@@ -44,7 +61,7 @@ Name: ${name}
 Email: ${email}
 Phone: ${phone || 'Not provided'}
 Company: ${company || 'Not provided'}
-Subject: ${subject}
+Subject: ${emailSubject}
 
 Message:
 ${message}
@@ -53,13 +70,16 @@ Submitted on: ${new Date().toLocaleString()}
     `;
 
     // Send email
-    await transporter.sendMail({
+    console.log('Attempting to send email...');
+    const emailResult = await transporter.sendMail({
       from: `"${process.env.COMPANY_NAME || 'Gayatri Electricals'}" <${process.env.EMAIL_USER}>`,
       to: process.env.COMPANY_EMAIL || process.env.EMAIL_USER,
-      subject: `Contact Form: ${subject}`,
+      subject: `Contact Form: ${emailSubject}`,
       text: emailContent,
       replyTo: email
     });
+    
+    console.log('Email sent successfully:', emailResult.messageId);
 
     res.status(200).json({
       success: true,
@@ -70,7 +90,8 @@ Submitted on: ${new Date().toLocaleString()}
     console.error('Contact form error:', error);
     res.status(500).json({
       error: 'Failed to submit contact form',
-      message: 'Please try again later'
+      message: 'Please try again later or contact us directly at tikemeet3@gmail.com',
+      details: error.message
     });
   }
 }
