@@ -1,0 +1,20 @@
+{
+  "name": "gayatri-ele",
+  "version": "1.0.0",
+  "description": "Gayatri Electricals & Electronics - Full Stack Application",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "build": "cd frontend && npm run build",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": ["electricals", "transformers", "react", "express"],
+  "author": "Gayatri Electricals",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

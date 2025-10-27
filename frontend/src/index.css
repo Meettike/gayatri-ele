@@ -1,0 +1,417 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gayatri Electricals & Electronics Design System
+Industrial-modern aesthetic with precision and innovation
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Industrial palette */
+    --background: 210 20% 5%;
+    --foreground: 210 15% 95%;
+
+    /* Card colors */
+    --card: 210 18% 8%;
+    --card-foreground: 210 15% 95%;
+
+    /* Popover colors */
+    --popover: 210 18% 8%;
+    --popover-foreground: 210 15% 95%;
+
+    /* Primary - Deep Industrial Blue */
+    --primary: 213 85% 25%;
+    --primary-foreground: 210 15% 95%;
+    --primary-glow: 213 85% 35%;
+
+    /* Secondary - Metallic Silver */
+    --secondary: 210 8% 25%;
+    --secondary-foreground: 210 15% 95%;
+
+    /* Muted - Industrial Gray */
+    --muted: 210 12% 15%;
+    --muted-foreground: 210 10% 65%;
+
+    /* Accent - Electric Blue */
+    --accent: 195 100% 45%;
+    --accent-foreground: 210 20% 5%;
+    --accent-glow: 195 100% 55%;
+
+    /* Industrial colors */
+    --industrial: 210 8% 20%;
+    --industrial-foreground: 210 15% 90%;
+    
+    /* Metallic colors */
+    --metallic: 210 5% 35%;
+    --metallic-foreground: 210 15% 95%;
+    --metallic-light: 210 8% 45%;
+
+    /* Electric colors */
+    --electric: 195 100% 50%;
+    --electric-glow: 195 100% 60%;
+    --electric-dim: 195 80% 40%;
+
+    /* System colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 15% 95%;
+
+    --border: 210 12% 18%;
+    --input: 210 12% 18%;
+    --ring: 195 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-electric: linear-gradient(135deg, hsl(var(--electric)), hsl(var(--accent-glow)));
+    --gradient-metallic: linear-gradient(135deg, hsl(var(--metallic)), hsl(var(--metallic-light)));
+    --gradient-industrial: linear-gradient(180deg, hsl(var(--background)), hsl(var(--industrial)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%);
+
+    /* Shadows */
+    --shadow-electric: 0 0 30px hsl(var(--electric) / 0.3);
+    --shadow-glow: 0 10px 40px hsl(var(--primary) / 0.2);
+    --shadow-metallic: 0 5px 20px hsl(var(--metallic) / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-electric: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
+    /* Light theme colors - Enhanced contrast */
+    --background: 0 0% 100%;
+    --foreground: 210 20% 15%; /* Darker text for better contrast */
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%; /* Darker card text */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    --primary: 213 85% 25%; /* Keep primary blue */
+    --primary-foreground: 0 0% 100%; /* White text on blue */
+
+    --secondary: 210 20% 95%;
+    --secondary-foreground: 210 20% 15%; /* Dark text on light background */
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 35%; /* Darker muted text for readability */
+
+    --accent: 195 100% 40%; /* Slightly darker accent for better contrast */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+
+    --destructive: 0 84.2% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 85%; /* Darker borders for visibility */
+    --input: 214.3 31.8% 85%;
+    --ring: 195 100% 40%;
+
+    /* Industrial colors for light theme - Better contrast */
+    --industrial: 210 15% 92%;
+    --industrial-foreground: 210 20% 15%;
+    
+    --metallic: 210 10% 80%;
+    --metallic-foreground: 210 20% 10%;
+    --metallic-light: 210 15% 85%;
+
+    /* Electric colors for light theme */
+    --electric: 195 100% 45%;
+    --electric-glow: 195 100% 50%;
+    --electric-dim: 195 80% 35%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 210 20% 15%;
+    --sidebar-primary: 213 85% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 95%;
+    --sidebar-accent-foreground: 210 20% 15%;
+    --sidebar-border: 214.3 31.8% 85%;
+    --sidebar-ring: 195 100% 40%;
+  }
+
+  .dark {
+    /* Keep your original beautiful dark theme colors */
+    --background: 210 20% 5%;
+    --foreground: 210 15% 95%;
+
+    --card: 210 18% 8%;
+    --card-foreground: 210 15% 95%;
+
+    --popover: 210 18% 8%;
+    --popover-foreground: 210 15% 95%;
+
+    --primary: 213 85% 25%;
+    --primary-foreground: 210 15% 95%;
+
+    --secondary: 210 8% 25%;
+    --secondary-foreground: 210 15% 95%;
+
+    --muted: 210 12% 15%;
+    --muted-foreground: 210 10% 65%;
+
+    --accent: 195 100% 45%;
+    --accent-foreground: 210 20% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 15% 95%;
+
+    --border: 210 12% 18%;
+    --input: 210 12% 18%;
+    --ring: 195 100% 45%;
+
+    /* Keep original industrial colors */
+    --industrial: 210 8% 20%;
+    --industrial-foreground: 210 15% 90%;
+    
+    --metallic: 210 5% 35%;
+    --metallic-foreground: 210 15% 95%;
+    --metallic-light: 210 8% 45%;
+
+    /* Keep original electric colors */
+    --electric: 195 100% 50%;
+    --electric-glow: 195 100% 60%;
+    --electric-dim: 195 80% 40%;
+
+    --sidebar-background: 210 18% 8%;
+    --sidebar-foreground: 210 15% 95%;
+    --sidebar-primary: 213 85% 25%;
+    --sidebar-primary-foreground: 210 15% 95%;
+    --sidebar-accent: 210 12% 15%;
+    --sidebar-accent-foreground: 210 15% 95%;
+    --sidebar-border: 210 12% 18%;
+    --sidebar-ring: 195 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  /* Ensure header takes full width */
+  header {
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Light theme specific text improvements */
+  .light {
+    /* Ensure all text has proper contrast in light mode */
+    h1, h2, h3, h4, h5, h6 {
+      color: hsl(210 20% 10%) !important;
+    }
+    
+    p, span, div {
+      color: hsl(210 15% 20%) !important;
+    }
+    
+    /* Muted text should still be readable */
+    .text-muted-foreground {
+      color: hsl(210 15% 40%) !important;
+    }
+    
+    /* Ensure accent text is visible */
+    .text-accent {
+      color: hsl(195 100% 35%) !important;
+    }
+    
+    /* Card content text */
+    .card-content, .card-description {
+      color: hsl(210 15% 25%) !important;
+    }
+  }
+}
+
+@layer components {
+  /* Mobile layout fixes */
+  @media (max-width: 768px) {
+    header {
+      position: fixed !important;
+      top: 0 !important;
+      z-index: 9999 !important;
+    }
+    
+    #home {
+      padding-top: 80px !important;
+      margin-top: 0 !important;
+    }
+    
+    /* Fix toaster positioning on mobile - target the actual toast viewport */
+    [data-radix-toast-viewport] {
+      top: 80px !important;
+      z-index: 9998 !important;
+    }
+    
+    /* Alternative selectors for toast positioning */
+    .fixed.top-0[class*="z-[100]"] {
+      top: 80px !important;
+      z-index: 9998 !important;
+    }
+    
+    /* Sonner toaster positioning */
+    [data-sonner-toaster] {
+      top: 80px !important;
+      z-index: 9998 !important;
+    }
+  }
+
+  /* Industrial Button Variants with improved contrast */
+  .btn-hero {
+    @apply bg-accent hover:bg-accent/90 hover:shadow-glow transform hover:scale-105 transition-all duration-300 border border-accent/20;
+    color: white !important;
+    font-weight: 600;
+  }
+  
+  .btn-electric {
+    @apply bg-electric hover:bg-electric/90 hover:shadow-glow transform hover:scale-105 transition-all duration-300;
+    color: white !important;
+    font-weight: 600;
+  }
+  
+  .btn-metallic {
+    @apply bg-industrial hover:bg-industrial/90 hover:shadow-glow transform hover:scale-105 transition-all duration-300;
+    color: white !important;
+    font-weight: 600;
+  }
+
+  /* Electric Glow Effects */
+  .electric-glow {
+    animation: electric-pulse 2s infinite;
+    filter: drop-shadow(0 0 10px #00D4FF);
+  }
+  
+  .metallic-surface {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    box-shadow: inset 0 1px 3px rgba(26, 26, 46, 0.5);
+  }
+
+  /* Transformer Animation Base */
+  .transformer-part {
+    opacity: 0;
+    transform: translateY(50px) rotateX(15deg);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transformer-part.animate {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes electric-pulse {
+    0%, 100% { 
+      filter: drop-shadow(0 0 5px #00D4FF);
+    }
+    50% { 
+      filter: drop-shadow(0 0 20px #00D4FF) drop-shadow(0 0 30px #00D4FF);
+    }
+  }
+
+  @keyframes transformer-assemble {
+    from {
+      opacity: 0;
+      transform: translateY(100px) scale(0.8) rotateX(45deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateX(0);
+    }
+  }
+
+  .animate-assemble {
+    animation: transformer-assemble 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 30s linear infinite;
+  }
+
+  .animate-infinite-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Electrical Animation Styles */
+  @keyframes energy-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes line-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 2px hsl(var(--electric-blue))) drop-shadow(0 0 4px hsl(var(--electric-blue)));
+      opacity: 0.5;
+    }
+    50% {
+      filter: drop-shadow(0 0 4px hsl(var(--electric-blue))) drop-shadow(0 0 8px hsl(var(--electric-blue)));
+      opacity: 1;
+    }
+  }
+
+  .animate-energy-pulse {
+    animation: energy-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-line-glow {
+    animation: line-glow 2s ease-in-out infinite;
+  }
+
+  /* Electric blue color variable */
+  :root {
+    --electric-blue: 195 100% 50%;
+  }
+}
