@@ -151,7 +151,7 @@ export const apiService = new ApiService();
 export class ContactService {
   static async submitContactForm(data: ContactFormData): Promise<ApiResponse> {
     try {
-      return await apiService.post('/contact/submit', data);
+      return await apiService.post('/contact', data);
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('Contact form submission failed:', error);
@@ -187,23 +187,7 @@ export class ContactService {
 export class QuoteService {
   static async submitQuoteRequest(data: QuoteRequestData): Promise<ApiResponse> {
     try {
-      const formData = new FormData();
-      
-      // Add all form fields
-      Object.entries(data).forEach(([key, value]) => {
-        if (key === 'attachments') {
-          // Handle file attachments
-          if (value && Array.isArray(value)) {
-            value.forEach((file: File) => {
-              formData.append('attachments', file);
-            });
-          }
-        } else if (value !== undefined && value !== null) {
-          formData.append(key, value.toString());
-        }
-      });
-
-      return await apiService.postFormData('/quote/submit', formData);
+      return await apiService.post('/quote', data as unknown as Record<string, unknown>);
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('Quote request submission failed:', error);
